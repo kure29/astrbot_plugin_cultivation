@@ -1,5 +1,5 @@
-name: astrbot_plugin_cultivation # 修仙游戏插件的唯一识别名
-desc: 八荒仙界修仙文字冒险游戏，体验从凡人到仙人的蜕变历程
-version: v1.0.0 # 插件版本号
-author: kure29 # 作者
-repo: https://github.com/kure29/astrbot_plugin_cultivation # 插件的仓库地址
+name: astrbot_plugin_cultivation
+desc: 基于AstrBot的史诗级修真RPG游戏插件，提供完整的修仙体验
+version: v2.0.0
+author: kure29
+repo: https://github.com/kure29/astrbot_plugin_cultivation
