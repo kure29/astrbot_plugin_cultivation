@@ -1,0 +1,401 @@
+{
+  "game_settings": {
+    "description": "游戏基础设置",
+    "type": "object",
+    "hint": "调整游戏难度和体验相关的设置",
+    "items": {
+      "difficulty_multiplier": {
+        "description": "难度倍数",
+        "type": "float",
+        "default": 1.0,
+        "hint": "调整游戏整体难度，1.0为标准难度，数值越大越难"
+      },
+      "exp_multiplier": {
+        "description": "经验倍数",
+        "type": "float",
+        "default": 1.0,
+        "hint": "调整经验获得倍数，数值越大升级越快"
+      },
+      "gold_multiplier": {
+        "description": "金币倍数",
+        "type": "float",
+        "default": 1.0,
+        "hint": "调整金币获得倍数，影响游戏经济平衡"
+      },
+      "enable_llm_descriptions": {
+        "description": "启用LLM生成描述",
+        "type": "bool",
+        "default": true,
+        "hint": "是否使用LLM生成游戏文案，关闭后使用预设文本"
+      },
+      "llm_call_cooldown": {
+        "description": "LLM调用冷却(秒)",
+        "type": "int",
+        "default": 10,
+        "hint": "避免频繁调用LLM的冷却时间"
+      },
+      "max_message_length": {
+        "description": "最大消息长度",
+        "type": "int",
+        "default": 200,
+        "hint": "LLM生成文本的最大长度，避免刷屏"
+      },
+      "enable_checkin_llm": {
+        "description": "签到使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "签到时是否使用LLM生成描述"
+      },
+      "enable_retreat_llm": {
+        "description": "闭关使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "闭关过程是否使用LLM生成描述"
+      },
+      "enable_breakthrough_llm": {
+        "description": "突破使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "境界突破是否使用LLM生成描述"
+      },
+      "enable_exploration_llm": {
+        "description": "探索使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "探索过程是否使用LLM生成描述"
+      },
+      "enable_cultivation_llm": {
+        "description": "修炼使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "修炼过程是否使用LLM生成感悟"
+      }
+    }
+  },
+  "combat_settings": {
+    "description": "战斗系统设置",
+    "type": "object",
+    "hint": "调整战斗相关的参数和机制",
+    "items": {
+      "encounter_rate": {
+        "description": "遭遇怪物概率",
+        "type": "float",
+        "default": 0.4,
+        "hint": "探索时遭遇怪物的基础概率(0.0-1.0)"
+      },
+      "drop_rate": {
+        "description": "掉落概率",
+        "type": "float",
+        "default": 0.4,
+        "hint": "击败怪物后掉落物品的概率(0.0-1.0)"
+      },
+      "base_crit_rate": {
+        "description": "基础暴击率",
+        "type": "float",
+        "default": 0.1,
+        "hint": "基础暴击概率，会受到气运属性影响"
+      },
+      "base_flee_rate": {
+        "description": "基础逃跑成功率",
+        "type": "float",
+        "default": 0.7,
+        "hint": "战斗中逃跑的基础成功率"
+      },
+      "enable_combat_llm": {
+        "description": "战斗使用LLM",
+        "type": "bool",
+        "default": false,
+        "hint": "战斗过程是否使用LLM生成描述（频率较高，建议关闭）"
+      }
+    }
+  },
+  "cultivation_settings": {
+    "description": "修炼系统设置",
+    "type": "object",
+    "hint": "调整修炼相关的机制和冷却时间",
+    "items": {
+      "cultivation_cooldown": {
+        "description": "修炼冷却时间(秒)",
+        "type": "int",
+        "default": 300,
+        "hint": "两次修炼之间的冷却时间，防止过度刷经验"
+      },
+      "breakthrough_enabled": {
+        "description": "启用突破系统",
+        "type": "bool",
+        "default": true,
+        "hint": "是否启用境界突破功能"
+      },
+      "tribulation_enabled": {
+        "description": "启用渡劫系统",
+        "type": "bool",
+        "default": true,
+        "hint": "是否启用渡劫突破功能"
+      },
+      "base_breakthrough_chance": {
+        "description": "基础突破成功率",
+        "type": "float",
+        "default": 0.6,
+        "hint": "突破时的基础成功率，会受到灵根等因素影响"
+      },
+      "retreat_min_hours": {
+        "description": "闭关最少时长(小时)",
+        "type": "float",
+        "default": 0.5,
+        "hint": "闭关最少需要的时间才能获得收益"
+      },
+      "retreat_max_efficiency_hours": {
+        "description": "闭关最佳时长(小时)",
+        "type": "int",
+        "default": 12,
+        "hint": "闭关最佳效率的时长，超过后效率递减"
+      }
+    }
+  },
+  "exploration_settings": {
+    "description": "探索系统设置",
+    "type": "object",
+    "hint": "调整探索和冒险相关的设置",
+    "items": {
+      "treasure_rate": {
+        "description": "发现宝藏概率",
+        "type": "float",
+        "default": 0.15,
+        "hint": "探索时发现宝藏的概率"
+      },
+      "special_event_rate": {
+        "description": "特殊事件概率",
+        "type": "float",
+        "default": 0.1,
+        "hint": "探索时触发特殊事件的概率"
+      },
+      "enable_location_restrictions": {
+        "description": "启用地点等级限制",
+        "type": "bool",
+        "default": true,
+        "hint": "是否根据角色等级限制可前往的地点"
+      },
+      "gathering_cooldown": {
+        "description": "采集冷却时间(秒)",
+        "type": "int",
+        "default": 1800,
+        "hint": "两次采集之间的冷却时间"
+      },
+      "treasure_hunt_cost": {
+        "description": "寻宝消耗灵石",
+        "type": "int",
+        "default": 100,
+        "hint": "每次寻宝消耗的灵石数量"
+      }
+    }
+  },
+  "economy_settings": {
+    "description": "经济系统设置",
+    "type": "object",
+    "hint": "调整游戏经济相关的设置",
+    "items": {
+      "daily_rewards_enabled": {
+        "description": "启用每日签到",
+        "type": "bool",
+        "default": true,
+        "hint": "是否启用每日签到奖励系统"
+      },
+      "max_daily_streak": {
+        "description": "最大连续签到天数",
+        "type": "int",
+        "default": 7,
+        "hint": "连续签到的最大天数，超过后重置奖励周期"
+      },
+      "death_penalty_enabled": {
+        "description": "启用死亡惩罚",
+        "type": "bool",
+        "default": true,
+        "hint": "角色死亡时是否有经验和金币损失"
+      },
+      "death_exp_loss_rate": {
+        "description": "死亡经验损失率",
+        "type": "float",
+        "default": 0.1,
+        "hint": "死亡时损失的经验比例(0.0-1.0)"
+      },
+      "death_spirit_stones_loss_rate": {
+        "description": "死亡灵石损失率",
+        "type": "float",
+        "default": 0.05,
+        "hint": "死亡时损失的灵石比例(0.0-1.0)"
+      }
+    }
+  },
+  "llm_settings": {
+    "description": "LLM文案生成设置",
+    "type": "object",
+    "hint": "精确控制LLM在各个场景下的使用",
+    "items": {
+      "llm_cache_size": {
+        "description": "LLM缓存大小",
+        "type": "int",
+        "default": 100,
+        "hint": "缓存LLM结果的数量，减少重复调用"
+      },
+      "llm_timeout": {
+        "description": "LLM调用超时(秒)",
+        "type": "int",
+        "default": 30,
+        "hint": "LLM调用的最大等待时间"
+      },
+      "enable_spirit_root_llm": {
+        "description": "灵根觉醒使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "角色创建时灵根觉醒是否使用LLM生成描述"
+      },
+      "enable_tribulation_llm": {
+        "description": "渡劫使用LLM",
+        "type": "bool",
+        "default": true,
+        "hint": "渡劫过程是否使用LLM生成描述"
+      },
+      "enable_item_discovery_llm": {
+        "description": "物品发现使用LLM",
+        "type": "bool",
+        "default": false,
+        "hint": "发现物品时是否使用LLM生成描述"
+      },
+      "llm_quality_check": {
+        "description": "启用LLM质量检查",
+        "type": "bool",
+        "default": true,
+        "hint": "是否检查LLM生成内容质量，质量差时使用备用文案"
+      }
+    }
+  },
+  "admin_settings": {
+    "description": "管理员设置",
+    "type": "object",
+    "hint": "管理员专用的高级设置",
+    "items": {
+      "debug_mode": {
+        "description": "调试模式",
+        "type": "bool",
+        "default": false,
+        "hint": "启用调试模式，显示更多游戏信息"
+      },
+      "admin_commands_enabled": {
+        "description": "启用管理员指令",
+        "type": "bool",
+        "default": true,
+        "hint": "是否启用管理员专用指令如重置数据等"
+      },
+      "auto_backup_enabled": {
+        "description": "启用自动备份",
+        "type": "bool",
+        "default": false,
+        "hint": "是否定期自动备份游戏数据"
+      },
+      "backup_interval_hours": {
+        "description": "备份间隔(小时)",
+        "type": "int",
+        "default": 24,
+        "hint": "自动备份的时间间隔"
+      },
+      "log_llm_calls": {
+        "description": "记录LLM调用",
+        "type": "bool",
+        "default": false,
+        "hint": "是否记录LLM调用的详细日志"
+      },
+      "max_concurrent_combats": {
+        "description": "最大同时战斗数",
+        "type": "int",
+        "default": 100,
+        "hint": "系统同时处理的最大战斗数量"
+      }
+    }
+  },
+  "display_settings": {
+    "description": "显示设置",
+    "type": "object",
+    "hint": "调整游戏界面和显示相关的设置",
+    "items": {
+      "use_traditional_chinese": {
+        "description": "使用繁体中文",
+        "type": "bool",
+        "default": false,
+        "hint": "是否使用繁体中文显示(需要重启插件)"
+      },
+      "show_detailed_stats": {
+        "description": "显示详细属性",
+        "type": "bool",
+        "default": true,
+        "hint": "状态信息中是否显示详细的角色属性"
+      },
+      "enable_color_text": {
+        "description": "启用彩色文本",
+        "type": "bool",
+        "default": true,
+        "hint": "是否在消息中使用颜色标记（适用于支持的平台）"
+      },
+      "max_leaderboard_entries": {
+        "description": "排行榜最大条目数",
+        "type": "int",
+        "default": 10,
+        "hint": "排行榜显示的最大玩家数量"
+      },
+      "compact_status_display": {
+        "description": "紧凑状态显示",
+        "type": "bool",
+        "default": false,
+        "hint": "是否使用紧凑的状态显示格式"
+      },
+      "show_progress_bars": {
+        "description": "显示进度条",
+        "type": "bool",
+        "default": true,
+        "hint": "是否在状态信息中显示进度条"
+      }
+    }
+  },
+  "advanced_features": {
+    "description": "高级功能",
+    "type": "object",
+    "hint": "实验性和高级功能开关",
+    "items": {
+      "enable_guild_system": {
+        "description": "启用门派系统(实验性)",
+        "type": "bool",
+        "default": false,
+        "hint": "启用门派系统，允许玩家创建和加入门派"
+      },
+      "enable_pvp_system": {
+        "description": "启用PVP系统(实验性)",
+        "type": "bool",
+        "default": false,
+        "hint": "启用玩家对战系统"
+      },
+      "enable_auction_house": {
+        "description": "启用拍卖行(实验性)",
+        "type": "bool",
+        "default": false,
+        "hint": "启用玩家间物品交易系统"
+      },
+      "enable_world_events": {
+        "description": "启用世界事件(实验性)",
+        "type": "bool",
+        "default": false,
+        "hint": "启用影响所有玩家的世界级事件"
+      },
+      "custom_llm_endpoint": {
+        "description": "自定义LLM端点",
+        "type": "string",
+        "default": "",
+        "hint": "如果需要使用自定义的LLM API端点，填写完整URL"
+      },
+      "enable_dynamic_difficulty": {
+        "description": "动态难度调整",
+        "type": "bool",
+        "default": false,
+        "hint": "根据玩家水平自动调整游戏难度"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# 忽略插件数据和缓存
+data/
+*.db
+*.db-journal
+__pycache__/
+*.pyc
+
+# 忽略IDE和系统文件
+.vscode/
+.idea/
+.DS_Store

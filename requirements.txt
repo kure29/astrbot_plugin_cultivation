@@ -1,0 +1,35 @@
+# AstrBot修仙RPG插件依赖文件
+
+# 核心依赖 (AstrBot已提供，这里列出以确保兼容性)
+# astrbot >= 3.4.0
+
+# 数据库相关 (Python内置，无需安装)
+# sqlite3
+
+# 异步支持 (Python内置)
+# asyncio
+
+# JSON处理 (Python内置)
+# json
+
+# 时间处理 (Python内置)
+# time
+
+# 随机数 (Python内置)
+# random
+
+# 正则表达式 (Python内置)
+# re
+
+# 类型提示 (Python内置)
+# typing
+
+# 数据类 (Python内置)
+# dataclasses
+
+# 如果需要额外的依赖，可以在这里添加：
+# requests>=2.25.0  # HTTP请求库
+# pillow>=8.0.0     # 图像处理库（如果需要生成图片）
+# numpy>=1.20.0     # 数值计算库（如果需要复杂计算）
+
+# 注意：本插件主要使用Python标准库，尽量减少外部依赖以提高兼容性
